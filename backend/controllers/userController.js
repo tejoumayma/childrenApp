@@ -54,7 +54,7 @@ const registerUser = asyncHandler(async (req, res) => {
       phone: user.phone,
       childName: user.childName,
       childSex: user.childSex,
-      token: generateToken(user._id),
+      token: generateToken(user._id, user.isAdmin),
     });
   } else {
     res.status(400);

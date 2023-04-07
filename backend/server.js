@@ -11,7 +11,11 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/api/admin", require("./routes/contentRoutes"));
+app.use("/api/video", require("./routes/videoRoutes"));
+app.use("/api/tale", require("./routes/taleRoutes"));
+app.use("/api/game", require("./routes/gameRoutes"));
+app.use("/api/admin", require("./routes/adminRoutes"));
+
 app.use("/api/users", require("./routes/userRoutes"));
 
 app.use(errorHandler);

@@ -1,20 +1,16 @@
 const express = require("express");
 
 const router = express.Router();
-const { getContent } = require("../controllers/contentController");
+const {
+  getContent,
+  setContent,
+  updateContent,
+  deleteContent,
+} = require("../controllers/contentController");
+const { protect } = require("../middleware/authmiddleware");
 
-router.get("/", getContent);
+router.route("/").get(protect, getContent).post(protect, setContent);
 
-router.post("/", (req, res) => {
-  res.status(200).json({ message: "set content" });
-});
-
-router.put("/:id", (req, res) => {
-  res.status(200).json({ message: `update  content ${req.params.id}` });
-});
-
-router.delete("/:id", (req, res) => {
-  res.status(200).json({ message: `delete  content ${req.params.id}` });
-});
+router.route("/:id").delete(protect, deleteContent).put(protect, updateContent);
 
 module.exports = router;
