@@ -7,7 +7,7 @@ const {
   updateTale,
   deleteTale,
 } = require("../controllers/taleController");
-const { protect } = require("../middleware/authmiddleware");
+const { protect } = require("../middleware/authAdminMiddleware");
 
 router.route("/").get(protect, getTale).post(protect, setTale);
 

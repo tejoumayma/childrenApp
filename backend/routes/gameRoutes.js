@@ -7,7 +7,7 @@ const {
   updateGame,
   deleteGame,
 } = require("../controllers/gameController");
-const { protect } = require("../middleware/authmiddleware");
+const { protect } = require("../middleware/authAdminMiddleware");
 
 router.route("/").get(protect, getGame).post(protect, setGame);
 

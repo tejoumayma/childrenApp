@@ -7,7 +7,7 @@ const {
   updateVideo,
   deleteVideo,
 } = require("../controllers/videosController");
-const { protect } = require("../middleware/authmiddleware");
+const { protect } = require("../middleware/authAdminMiddleware");
 
 router.route("/").get(protect, getVideo).post(protect, setVideo);
 
