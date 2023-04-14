@@ -54,6 +54,7 @@ const registerUser = asyncHandler(async (req, res) => {
       phone: user.phone,
       childName: user.childName,
       childSex: user.childSex,
+      isAdmin: user.isAdmin,
       token: generateToken(user._id, user.isAdmin),
     });
   } else {

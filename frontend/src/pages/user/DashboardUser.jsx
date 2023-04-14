@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import vdicon from "./pic/vdicon.png";
 import taleicon from "./pic/taleicon.png";
 import gameicon from "./pic/gameicon.png";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { reset, getVideos } from "../../features/videos/videoSlice";
+import { getTales } from "../../features/tales/taleSlice";
 function DashboardUser() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.authUser);
+  const { isLoading, isError, message } = useSelector((state) => state.Videos);
+  const {
+    isLoading: loadingTales,
+    isError: errorTales,
+    message: messageTales,
+  } = useSelector((state) => state.Tales);
+
+  useEffect(() => {
+    if (isError) {
+      const messages = message.split("\n");
+      messages.forEach((message) => {
+        toast.error(message);
+      });
+    }
+
+    if (!user) {
+      navigate("/login");
+    }
+
+    if (user) {
+      dispatch(getVideos());
+      dispatch(getTales());
+    }
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, isError, message, navigate, dispatch]);
+
   return (
     <div
       className="userDash"
@@ -19,9 +55,9 @@ function DashboardUser() {
         <div className="card-body">
           <h5 className="card-title">Videos</h5>
           <p className="card-text">To watch some videos .</p>
-          <a href="#" className="btn btn-primary">
-            Show videos
-          </a>
+          <Link to="/tales" className="btn btn-primary">
+            Show tales
+          </Link>
         </div>
       </div>
 
@@ -30,9 +66,9 @@ function DashboardUser() {
         <div className="card-body">
           <h5 className="card-title">Tales</h5>
           <p className="card-text">To watch some tales.</p>
-          <a href="#" className="btn btn-primary">
-            Show tales
-          </a>
+          <Link to="/videos" className="btn btn-primary">
+            Show videos
+          </Link>
         </div>
       </div>
 

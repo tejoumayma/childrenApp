@@ -34,7 +34,7 @@ export const getVideos = createAsyncThunk(
   "video/getAll",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
+      const token = thunkAPI.getState().authAdmin.admin.token;
       return await videoService.getVideos(token);
     } catch (error) {
       console.log(error);

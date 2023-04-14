@@ -16,7 +16,7 @@ export const createTale = createAsyncThunk(
   "tale/create",
   async (taleData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
+      const token = thunkAPI.getState().authAdmin.admin.token;
       return await taleService.createTale(taleData, token);
     } catch (error) {
       console.log(error);

@@ -38,6 +38,9 @@ function Login() {
 
     if (isSuccess || user) {
       navigate("/dashboardUser");
+      if (user.isAdmin === true) {
+        navigate("/dashboardAdmin");
+      }
     }
 
     dispatch(reset());
@@ -98,7 +101,7 @@ function Login() {
                           <div className="text-center pt-1 mb-5 pb-1">
                             <button
                               className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                              type="button"
+                              type="submit"
                             >
                               LogIn
                             </button>

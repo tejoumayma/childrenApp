@@ -134,7 +134,7 @@ export const RegisterAdmin = () => {
 
                           <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                             <button
-                              type="button"
+                              type="submit"
                               className="btn btn-primary btn-lg"
                             >
                               Register

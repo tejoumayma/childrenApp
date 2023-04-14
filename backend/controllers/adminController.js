@@ -50,6 +50,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
       _id: admin.id,
       name: admin.name,
       email: admin.email,
+      isAdmin: admin.isAdmin,
       token: generateToken(admin._id, admin.isAdmin),
     });
   } else {

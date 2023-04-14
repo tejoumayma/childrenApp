@@ -49,9 +49,9 @@ export default function DashboardAdmin() {
   }, [current]);
   //Tales
   const [tale, setTale] = useState({
-    taleName: " ",
-    URLtale: " ",
-    taleDescription: " ",
+    taleName: "",
+    URLtale: "",
+    taleDescription: "",
   });
   const { taleName, URLtale, taleDescription } = tale;
   const { currentTale } = useSelector((state) => state.Tales);
@@ -61,12 +61,12 @@ export default function DashboardAdmin() {
 
   const onSubmitTale = (e) => {
     e.preventDefault();
-    if (current === null) {
+    if (currentTale === null) {
       dispatchTale(createTale({ taleName, URLtale, taleDescription }));
       setTale({
-        taleName: " ",
-        URLTale: " ",
-        taleDescription: " ",
+        taleName: "",
+        URLtale: "",
+        taleDescription: "",
       });
     }
   };
@@ -76,9 +76,9 @@ export default function DashboardAdmin() {
       setTale(currentTale);
     } else {
       setTale({
-        taleName: " ",
-        URLTale: " ",
-        taleDescription: " ",
+        taleName: "",
+        URLtale: "",
+        taleDescription: "",
       });
     }
   }, [currentTale]);
@@ -149,7 +149,7 @@ export default function DashboardAdmin() {
                             type="URL"
                             id="URLtale"
                             className="form-control form-control-lg"
-                            onChangeTale={onChangeTale}
+                            onChange={onChangeTale}
                             name="URLtale"
                             value={URLtale}
                           />
@@ -164,7 +164,7 @@ export default function DashboardAdmin() {
                             type="text"
                             id="taleDescription"
                             className="form-control form-control-lg"
-                            onChangeTale={onChangeTale}
+                            onChange={onChangeTale}
                             name="taleDescription"
                             value={taleDescription}
                           />
@@ -185,7 +185,7 @@ export default function DashboardAdmin() {
                             type="text"
                             className="form-control form-control-lg"
                             id="taleName"
-                            onChangeTale={onChangeTale}
+                            onChange={onChangeTale}
                             name="taleName"
                             value={taleName}
                           />

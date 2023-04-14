@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema(
       required: [true, "Please add your name"],
     },
     phone: {
-      type: Number,
+      type: String,
       required: [true, "Please add your phone"],
     },
     childName: {
